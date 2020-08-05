@@ -15,6 +15,7 @@ export default class SignupLoginScreen extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email,password).then((response)=>{
             Alert.alert("Successfully logged in!");
             console.log("Successfully logged in!");
+            this.props.navigation.navigate(MainUI);
         }).catch((e)=>{
             Alert.alert("Failed to log in: "+e.message);
             console.error("Failed to log in: "+e.message);

@@ -5,40 +5,19 @@ import 'firebase/auth';
 import db from './config';
 import SignupLoginScreen from './screens/SignupLoginScreen';
 import TabNavigation from './TabNavigation';
+import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-export default class Container extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            currentUser : {}
-        }
-    }
-    checkLoggedIn=()=>{
-        this.setState({
-            currentUser : firebase.auth().currentUser
-        });
-    }
-    componentDidMount() {
-        this.checkLoggedIn();
-    }
-    render() {
-        if(this.state.currentUser) {
-            return (
-                <TabNavigation/>
-            )
-        } else {
-            return (
-                <View>
-                <SignupLoginScreen/>
-                <TouchableOpacity onPress={()=>{this.checkLoggedIn()}}
-                style={{
-                    alignSelf : 'center',
-                    borderWidth : 1,
-                }}>
-                    <Text>Continue</Text>
-                </TouchableOpacity>
-                </View>
-            )
-        }
-    }
+export default function App() {
+    return (
+        <View>
+            <AppContainer/>
+        </View>
+    );
 }
+
+const switchNavigator = createSwitchNavigator({
+    SignupLogin : {screen : SignupLoginScreen},
+    MainUI : {screen : TabNavigation}
+});
+
+const AppContainer = createAppContainer(switchNavigator);

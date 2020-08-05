@@ -6,10 +6,9 @@ import db from './config';
 import RequestScreen from './screens/RequestScreen';
 import PendingRequestsScreen from './screens/PendingRequestsScreen';
 import { createAppContainer } from 'react-navigation';
-import 'react-native-gesture-handler';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-const tabNavigator = createBottomTabNavigator({
+export const tabNavigator = createBottomTabNavigator({
     RequestScreen : {screen : RequestScreen, navigationOptions : {
       title : 'Request a book',
       tabBarLabel : 'Request a book'
