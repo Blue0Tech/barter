@@ -31,7 +31,7 @@ export default class SignupLoginScreen extends React.Component {
     }
     render() {
         return (
-            <KeyboardAvoidingView style={{alignItems : 'center', marginTop : 10}}>
+            <KeyboardAvoidingView style={{alignItems : 'center', marginTop : 25}}>
                 <View>
                     <TextInput style={styles.loginBox}
                     placeholder={"abc@example.com"}
