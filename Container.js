@@ -7,17 +7,11 @@ import SignupLoginScreen from './screens/SignupLoginScreen';
 import TabNavigation from './TabNavigation';
 import { createSwitchNavigator, createAppContainer } from 'react-navigation';
 
-export default function App() {
-    return (
-        <View>
-            <AppContainer/>
-        </View>
-    );
-}
-
 const switchNavigator = createSwitchNavigator({
     SignupLogin : {screen : SignupLoginScreen},
     MainUI : {screen : TabNavigation}
 });
 
 const AppContainer = createAppContainer(switchNavigator);
+
+export default AppContainer;

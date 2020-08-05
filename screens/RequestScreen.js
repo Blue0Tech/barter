@@ -16,7 +16,7 @@ export default class RequestScreen extends React.Component {
     }
     render() {
         return (
-            <KeyboardAvoidingView style={{alignItems : 'center', marginTop : 25}}>
+            <KeyboardAvoidingView style={{alignItems : 'center', marginTop : 30}}>
                 <Text>{firebase.auth().currentUser ? firebase.auth().currentUser.email : "Not logged in"}</Text>
                 <TextInput style={styles.textBox}
                 placeholder={"Item"}

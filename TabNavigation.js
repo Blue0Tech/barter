@@ -8,10 +8,10 @@ import PendingRequestsScreen from './screens/PendingRequestsScreen';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
-export const tabNavigator = createBottomTabNavigator({
+const tabNavigator = createBottomTabNavigator({
     RequestScreen : {screen : RequestScreen, navigationOptions : {
-      title : 'Request a book',
-      tabBarLabel : 'Request a book'
+      title : 'Request an item',
+      tabBarLabel : 'Request an item'
     }},
     PendingRequestsScreen : {screen : PendingRequestsScreen, navigationOptions : {
       title : 'See your requests',
