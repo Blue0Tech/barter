@@ -23,18 +23,25 @@ export default class SignupLoginScreen extends React.Component {
             console.log("Successfully logged in!");
             this.props.navigation.navigate('MainUI');
         }).catch((e)=>{
-            Alert.alert("Failed to log in: "+e.message);
+            Alert.alert("Error","Failed to log in: "+e.message);
             console.error("Failed to log in: "+e.message);
         });
     }
-    signup=(email,password,confirmPassword)=>{
+    signup=(email,password,confirmPassword,firstName,lastName,contactNumber,address)=>{
         if(password==confirmPassword) {
             firebase.auth().createUserWithEmailAndPassword(email,password).then((response)=>{
+                db.collection('users').doc(firebase.auth().currentUser.uid).set({
+                    firstName : firstName,
+                    lastName : lastName,
+                    email : email,
+                    contactNumber : contactNumber,
+                    address : address
+                })
                 Alert.alert("Successfully signed up!");
                 console.log("Successfully signed up!");
                 this.props.navigation.navigate('MainUI');
             }).catch((e)=>{
-                Alert.alert("Failed to sign up: "+e.message);
+                Alert.alert("Error","Failed to sign up: "+e.message);
                 console.error("Failed to sign up: "+e.message);
             });
         } else {
@@ -145,7 +152,7 @@ export default class SignupLoginScreen extends React.Component {
                                 <TouchableOpacity
                                 style={styles.registerButton}
                                     onPress={()=>{
-                                        this.signup(this.state.email,this.state.password,this.state.confirmPassword);
+                                        this.signup(this.state.email,this.state.password,this.state.confirmPassword,this.state.firstName,this.state.lastName,this.state.contactNumber,this.state.address);
                                     }}
                                 >
                                     <Text style={styles.registerButtonText}>Register</Text>

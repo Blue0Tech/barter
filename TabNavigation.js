@@ -3,19 +3,19 @@ import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, TouchableOpaci
 import firebase from 'firebase';
 import 'firebase/auth';
 import db from './config';
-import RequestScreen from './screens/RequestScreen';
-import PendingRequestsScreen from './screens/PendingRequestsScreen';
+import ExchangeScreen from './screens/ExchangeScreen';
+import HomeScreen from './screens/HomeScreen';
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 
 const tabNavigator = createBottomTabNavigator({
-    RequestScreen : {screen : RequestScreen, navigationOptions : {
-      title : 'Request an item',
-      tabBarLabel : 'Request an item'
+    HomeScreen : {screen : HomeScreen, navigationOptions : {
+      title : 'Home',
+      tabBarLabel : 'Home'
     }},
-    PendingRequestsScreen : {screen : PendingRequestsScreen, navigationOptions : {
-      title : 'See your requests',
-      tabBarLabel : 'See your requests'
+    ExchangeScreen : {screen : ExchangeScreen, navigationOptions : {
+      title : 'Exchange',
+      tabBarLabel : 'Exchange'
     }}
 });
 
