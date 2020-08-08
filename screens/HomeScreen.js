@@ -59,12 +59,11 @@ export default class PendingRequestsScreen extends React.Component {
                         this.setState({isRefreshing : true});
                         this.updateData();
                     }}
-                    renderItem={(item, index)=>{
-                        console.log("rendering");
-                        <View key={index} style={ViewStyle}>
+                    renderItem={({item})=>(
+                        <View style={ViewStyle}>
                             <Text>{item.item}</Text>
                         </View>
-                    }}
+                    )}
                 />
             </View>
         )
