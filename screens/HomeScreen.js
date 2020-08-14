@@ -49,7 +49,7 @@ export default class PendingRequestsScreen extends React.Component {
         return (
             <View style={{alignItems : 'center', marginTop : 30}}>
                 <Text>{firebase.auth().currentUser ? firebase.auth().currentUser.email : "Not logged in"}</Text>
-                <TouchableOpacity onPress={()=>{console.log(this.state.data)}}><Text>Log data</Text></TouchableOpacity>
+                <TouchableOpacity onPress={async()=>{await this.updateData();console.log(this.state.data)}}><Text>Show list</Text></TouchableOpacity>
                 <FlatList
                     data={this.state.data}
                     initialNumToRender={1}
@@ -63,7 +63,8 @@ export default class PendingRequestsScreen extends React.Component {
                         console.log("rendering");
                         return (
                             <View style={ViewStyle}>
-                                <Text>{item.item}</Text>
+                                <Text style={{fontSize : 20}}>{item.item.item}</Text>
+                                <Text style={{fontSize : 15}}>{item.item.desc}</Text>
                             </View>
                         )
                     }}
