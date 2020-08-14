@@ -21,11 +21,14 @@ export default class SignupLoginScreen extends React.Component {
         firebase.auth().signInWithEmailAndPassword(email,password).then((response)=>{
             Alert.alert("Successfully logged in!");
             console.log("Successfully logged in!");
-            this.props.navigation.navigate('MainUI');
+            this.changeScreen();
         }).catch((e)=>{
             Alert.alert("Error","Failed to log in: "+e.message);
             console.error("Failed to log in: "+e.message);
         });
+    }
+    changeScreen=()=>{
+        this.props.navigation.navigate('MainUI');
     }
     signup=(email,password,confirmPassword,firstName,lastName,contactNumber,address)=>{
         if(password==confirmPassword) {
@@ -39,7 +42,6 @@ export default class SignupLoginScreen extends React.Component {
                 })
                 Alert.alert("Successfully signed up!");
                 console.log("Successfully signed up!");
-                this.props.navigation.navigate('MainUI');
             }).catch((e)=>{
                 Alert.alert("Error","Failed to sign up: "+e.message);
                 console.error("Failed to sign up: "+e.message);

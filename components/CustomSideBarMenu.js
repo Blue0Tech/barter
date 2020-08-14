@@ -1,12 +1,23 @@
-import react from 'react';
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import 'firebase/auth';
 import db from '../config';
-import SettingScreen from '../screens/SettingScreen';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import TabNavigation from '../TabNavigation';
+import { DrawerItems } from 'react-navigation-drawer';
 
-const drawerNavigator = createDrawerNavigator();
-
-export default drawerNavigator;
+export default class CustomSideBarMenu extends React.Component {
+    signOut=()=>{
+        firebase.auth().signOut();
+        this.props.navigation.navigate('SignupLogin');
+    }
+    render() {
+        return (
+            <View style={{marginTop : 30}}>
+                <DrawerItems {...this.props}/>
+                <TouchableOpacity onPress={this.signOut()}>
+                    <Text>Log out</Text>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+}
